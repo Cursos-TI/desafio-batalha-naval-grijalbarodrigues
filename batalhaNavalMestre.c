@@ -117,7 +117,7 @@ int main (){
         int l1 = linhasNavio1[i];
         int c1 = colunasNavio1[i];
         
-        if(l1<0||LINHAS>10||c1<0||COLUNAS>10){
+        if(l1<0||l1>=LINHAS||c1<0||c1>=COLUNAS){
             printf("Erro! Navio 1 fora do limite do tabuleiro - %c%d\n", letras[c1], numeros[l1]);
             return 1;
         }
@@ -127,15 +127,15 @@ int main (){
             printf("Erro. 1º navio com sobreposicao em %c%d\n", letras[c1], numeros[l1]);
             break;
         }
-        if (sobreposicao1==0){
-            if(tabuleiro[l1][c1]==0){
-                tabuleiro[linhasNavio1[i]][colunasNavio1[i]]=NAVIO;
-            }
-            if(tabuleiro[l1][c1]==1){
-                tabuleiro[linhasNavio1[i]][colunasNavio1[i]]=EFEITOHABILIDADE;
-            }
+    if (sobreposicao1==0){
+        for(int i=0; i<3;i++){
+        if(tabuleiro[l1][c1]==0){
+            tabuleiro[linhasNavio1[i]][colunasNavio1[i]]=NAVIO;
         }
-            
+        if(tabuleiro[l1][c1]==1){
+            tabuleiro[linhasNavio1[i]][colunasNavio1[i]]=EFEITOHABILIDADE;
+        }
+    }}       
     }printf("Primeiro Navio posicionado\n");    
 
 //verificar se há sobreposicao antes de colocar o segundo navio:
@@ -149,7 +149,7 @@ int main (){
         int l2 = linhasNavio2[i];
         int c2 = colunasNavio2[i];
         
-        if(l2<0||LINHAS>10||c2<0||COLUNAS>10){
+        if(l2<0||l2>=LINHAS||c2<0||c2>=COLUNAS){
             printf("Erro! Navio 2 fora do limite do tabuleiro - %c%d\n", letras[c2], numeros[l2]);
             return 1;
         }
@@ -185,7 +185,7 @@ int main (){
         int ld1=linhasNavioD1[i];
         int cd1=colunasNavioD1[i];
 
-        if(ld1<0||LINHAS>10||cd1<0||COLUNAS>10){
+        if(ld1<0||ld1>=LINHAS||cd1<0||cd1>=COLUNAS){
             printf("Erro! Navio 3 fora do limite do tabuleiro - %c%d\n", letras[cd1], numeros[ld1]);
             return 1;
         }
@@ -196,7 +196,7 @@ int main (){
         }
     }    
     if(sobreposicao3==0){
-        printf("Terceiro navio DIAGONAL posicionado.\n");
+        
         for(int i=0;i<3;i++){
             int ld1=linhasNavioD1[i];
             int cd1=colunasNavioD1[i];
@@ -209,7 +209,7 @@ int main (){
             }
             
         }
-        
+        printf("Terceiro navio DIAGONAL posicionado.\n");
     }
 
     //QUARTO NAVIO DIAGONAL D-E
@@ -223,7 +223,7 @@ int main (){
         int ld2=linhasNavioD2[i];
         int cd2=colunasNavioD2[i];
 
-        if(ld2<0||LINHAS>10||cd2<0||COLUNAS>10){
+        if(ld2<0||ld2>=LINHAS||cd2<0||cd2>=COLUNAS){
             printf("Erro! Navio 4 fora do limite do tabuleiro - %c%d\n", letras[cd2], numeros[ld2]);
             return 1;
         }
@@ -234,7 +234,7 @@ int main (){
         }
     }    
     if(sobreposicao4==0){
-        printf("QUARTO navio DIAGONAL posicionado.\n");
+        
         for(int i=0;i<3;i++){
             int ld2=linhasNavioD2[i];
             int cd2=colunasNavioD2[i];
@@ -246,6 +246,7 @@ int main (){
                 tabuleiro[linhasNavioD2[i]][colunasNavioD2[i]]=EFEITOHABILIDADE;
             }
         }
+        printf("QUARTO navio DIAGONAL posicionado.\n");
     }
 
     //printar as letras(colunas) do tabuleiro:
